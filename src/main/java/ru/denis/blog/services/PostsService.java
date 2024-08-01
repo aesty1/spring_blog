@@ -35,11 +35,13 @@ public class PostsService {
         postsRepository.save(post);
     }
 
-    public void delete(Post post) {
-        postsRepository.delete(post);
+    public void delete(int id) {
+        postsRepository.deleteById(id);
     }
 
-    public void change(Post post) {
+    public void change(int id, Post post) {
+        post.setPost_id(id);
+
         postsRepository.save(post);
     }
 

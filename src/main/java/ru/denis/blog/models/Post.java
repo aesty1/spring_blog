@@ -1,7 +1,10 @@
 package ru.denis.blog.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Post")

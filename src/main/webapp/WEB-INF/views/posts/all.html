@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Get all posts</title>
+</head>
+<body>
+    <div th:each="post : ${posts}">
+        <a th:text="${post.getName() + ',' + post.getAuthor().getName()}" th:href="@{/posts/{id}(id=${post.getPost_id()})}"></a>
+    </div>
+</body>
+</html>

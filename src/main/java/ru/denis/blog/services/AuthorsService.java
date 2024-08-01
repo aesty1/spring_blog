@@ -40,7 +40,8 @@ public class AuthorsService {
         authorsRepository.delete(author);
     }
 
-    public void change(Author author) {
+    public void change(int id, Author author) {
+        author.setAuthor_id(id);
         authorsRepository.save(author);
     }
 

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New post</title>
+</head>
+<body>
+    <form th:method="post" th:object="${post}" th:action="@{/posts}">
+        <input placeholder="Название" type="text" th:field="*{name}">
+        <input placeholder="Контент" type="text" th:field="*{content}">
+        <br>
+
+        <button type="submit">Сохранить</button>
+    </form>
+</body>
+</html>

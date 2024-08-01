@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Get one</title>
+</head>
+<body>
+    <a th:text="${post.getAuthor().getName()}"></a>
+
+    <br>
+
+    <h1 th:text="${post.getName()}"></h1>
+    <p th:text="${post.getUpload_time()}"></p>
+
+    <br>
+
+    <p th:text="${post.getContent()}"></p>
+
+    <br>
+
+    <form th:method="delete" th:action="@{/posts/{id}(id=${post.getPost_id()})}">
+        <button type="submit">Удалить статью</button>
+    </form>
+
+    <br>
+
+    <a th:href="@{/posts/{id}/edit(id=${post.getPost_id()})}">Изменить статью</a>
+</body>
+</html>

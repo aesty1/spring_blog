@@ -15,8 +15,6 @@ public class Author {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "content")
-    private String content;
 
     @Column(name = "registration_time")
     @Temporal(TemporalType.TIMESTAMP)
@@ -28,9 +26,8 @@ public class Author {
     public Author() {
     }
 
-    public Author(String name, String content) {
+    public Author(String name) {
         this.name = name;
-        this.content = content;
     }
 
 
@@ -48,14 +45,6 @@ public class Author {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
     }
 
     public Date getRegistration_time() {
