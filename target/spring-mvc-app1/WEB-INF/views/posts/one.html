@@ -25,5 +25,34 @@
     <br>
 
     <a th:href="@{/posts/{id}/edit(id=${post.getPost_id()})}">Изменить статью</a>
+
+    <br>
+    <br>
+    <br>
+
+    <div th:each="comment : ${comments}">
+        <p th:text="${comment.getAuthor_name()}"></p>
+        <p th:text="${comment.getUpload_time()}"></p>
+        <p th:text="${comment.getContent()}"></p>
+        <form th:method="delete" th:object="${comment}" th:action="@{/comments/{id}(id = ${comment.getComment_id()})}">
+            <button type="submit">Удалить комментарий</button>
+        </form>
+        <br>
+        <br>
+
+    </div>
+
+    <br>
+    <div>
+        <form method="post" th:object="${comment}" th:action="@{/comments/{id}(id = ${post.getPost_id()})}">
+            <input placeholder="Имя" type="text" th:field="*{author_name}">
+            <input placeholder="Текст" type="text" th:field="*{content}">
+
+            <br>
+
+            <button type="submit">Отправить комментарий</button>
+        </form>
+    </div>
+
 </body>
 </html>

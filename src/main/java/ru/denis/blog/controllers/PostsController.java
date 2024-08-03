@@ -5,8 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.denis.blog.models.Author;
+import ru.denis.blog.models.Comment;
 import ru.denis.blog.models.Post;
 import ru.denis.blog.services.AuthorsService;
+import ru.denis.blog.services.CommentsService;
 import ru.denis.blog.services.PostsService;
 
 @Controller
@@ -14,11 +16,13 @@ import ru.denis.blog.services.PostsService;
 public class PostsController {
     private final AuthorsService authorsService;
     private final PostsService postsService;
+    private final CommentsService commentsService;
 
     @Autowired
-    public PostsController(AuthorsService authorsService, PostsService postsService) {
+    public PostsController(AuthorsService authorsService, PostsService postsService, CommentsService commentsService) {
         this.authorsService = authorsService;
         this.postsService = postsService;
+        this.commentsService = commentsService;
     }
 
 
@@ -30,8 +34,9 @@ public class PostsController {
     }
 
     @GetMapping("/{id}")
-    public String getOne(@PathVariable("id") int id, Model model) {
+    public String getOne(@PathVariable("id") int id, Model model, @ModelAttribute("comment") Comment comment) {
         model.addAttribute("post", postsService.getById(id));
+        model.addAttribute("comments", commentsService.findAllByPost(postsService.getById(id)));
 
         return "posts/one";
     }
