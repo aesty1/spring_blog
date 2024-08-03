@@ -8,7 +8,9 @@
     <form th:method="post" th:object="${post}" th:action="@{/posts}">
         <input placeholder="Название" type="text" th:field="*{name}">
         <input placeholder="Контент" type="text" th:field="*{content}">
+
         <br>
+
 
         <button type="submit">Сохранить</button>
     </form>

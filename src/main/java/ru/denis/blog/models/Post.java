@@ -1,10 +1,7 @@
 package ru.denis.blog.models;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "Post")
@@ -75,4 +72,5 @@ public class Post {
     public void setUpload_time(Date upload_time) {
         this.upload_time = upload_time;
     }
+
 }

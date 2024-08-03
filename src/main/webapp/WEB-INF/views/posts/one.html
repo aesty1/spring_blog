@@ -5,7 +5,7 @@
     <title>Get one</title>
 </head>
 <body>
-    <a th:text="${post.getAuthor().getName()}"></a>
+    <a th:text="${post.getAuthor().getName()}" th:href="@{/authors/{id}(id = ${post.getAuthor().getAuthor_id()})}"></a>
 
     <br>
 

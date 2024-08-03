@@ -9,18 +9,16 @@ import ru.denis.blog.models.Post;
 import ru.denis.blog.services.AuthorsService;
 import ru.denis.blog.services.PostsService;
 
-import java.util.ArrayList;
-
 @Controller
 @RequestMapping("/posts")
 public class PostsController {
-    private final PostsService postsService;
     private final AuthorsService authorsService;
+    private final PostsService postsService;
 
     @Autowired
-    public PostsController(PostsService postsService, AuthorsService authorsService) {
-        this.postsService = postsService;
+    public PostsController(AuthorsService authorsService, PostsService postsService) {
         this.authorsService = authorsService;
+        this.postsService = postsService;
     }
 
 
@@ -39,13 +37,15 @@ public class PostsController {
     }
 
     @GetMapping("/new")
-    public String createPage(@ModelAttribute("post") Post post) {
+    public String createPage(@ModelAttribute("post") Post post, Model model) {
+        model.addAttribute("authors", authorsService.getAll());
         return "posts/new";
     }
 
     @PostMapping()
     public String create(@ModelAttribute("post") Post post) {
         post.setAuthor(authorsService.getById(1));
+
         postsService.create(post);
 
         return "redirect:/posts";

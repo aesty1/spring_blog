@@ -45,5 +45,11 @@ public class PostsService {
         postsRepository.save(post);
     }
 
+    public List<Post> getAuthorPosts(Author author) {
+        List<Post> posts = postsRepository.findAllByAuthor(author);
+
+        return posts;
+    }
+
 
 }

@@ -20,8 +20,8 @@ public class Author {
     @Temporal(TemporalType.TIMESTAMP)
     private Date registration_time;
 
-    @OneToMany(mappedBy = "author", fetch = FetchType.LAZY)
-    private List<Post> posts;
+//    @OneToMany(mappedBy = "author", fetch = FetchType.LAZY)
+//    private List<Post> posts;
 
     public Author() {
     }
@@ -55,11 +55,4 @@ public class Author {
         this.registration_time = registration_time;
     }
 
-    public List<Post> getPosts() {
-        return posts;
-    }
-
-    public void setPosts(List<Post> posts) {
-        this.posts = posts;
-    }
 }

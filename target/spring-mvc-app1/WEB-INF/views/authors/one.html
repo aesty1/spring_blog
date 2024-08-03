@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Get author</title>
+</head>
+<body>
+    <p th:text="${author.getRegistration_time()}"></p>
+
+    <h1 th:text="${author.getName()}"></h1>
+
+    <br>
+
+    <div th:each="post : ${posts}">
+        <a th:text="${post.getName()} + ', ' + ${post.getUpload_time()}" th:href="@{/posts/{id}(id = ${post.getPost_id()})}"></a>
+    </div>
+
+    <br>
+
+    <a th:href="@{/authors/{id}/edit(id = ${author.getAuthor_id()})}">Изменить автора</a>
+
+    <br>
+
+    <form th:method="delete" th:action="@{/authors/{id}(id = ${author.getAuthor_id()})}">
+        <button type="submit">Удалить автора</button>
+    </form>
+</body>
+</html>
